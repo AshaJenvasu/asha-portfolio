@@ -2,6 +2,7 @@ import { Navbar } from "./components/00_Navbar";
 import { Hero } from "./components/01_Hero";
 import { TechStack } from "./components/02_TechStack";
 import { Experience } from "./components/03_Experience";
+import { Projects } from "./components/04_Project";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Hero />
         <TechStack />
         <Experience />
-        {/* <Projects /> */}
+        <Projects />
         {/* <Education /> */}
         {/* <Contact /> */}
       </main>
