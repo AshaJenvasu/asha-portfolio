@@ -3,6 +3,7 @@ import { Hero } from "./components/01_Hero";
 import { TechStack } from "./components/02_TechStack";
 import { Experience } from "./components/03_Experience";
 import { Projects } from "./components/04_Project";
+import { Education } from "./components/05_Education";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
         <TechStack />
         <Experience />
         <Projects />
-        {/* <Education /> */}
+        <Education />
         {/* <Contact /> */}
       </main>
 

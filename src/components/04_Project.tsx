@@ -1,7 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
-import { FaGithub } from "react-icons/fa";
 
 interface ProjectItem {
   bannerStyle: React.CSSProperties;
@@ -18,7 +16,6 @@ interface ProjectItem {
   githubUrl: string;
 }
 
-// 📦 ดึงข้อมูล FIELD OPERATIONS ดั้งเดิมของคุณน้องกลับมาใช้งาน 100%
 const projectsData: ProjectItem[] = [
   {
     bannerStyle: { background: "linear-gradient(135deg, #0d2137, #1a3a5c)" },
@@ -50,7 +47,7 @@ const projectsData: ProjectItem[] = [
     bannerStyle: { background: "linear-gradient(135deg, #0d2a1c, #1a5c3a)" },
     bigText: "ANIME",
     badge: "Live",
-    badgeClass: "bg-[var(--accent2)] text-white", // สีป้ายไฟเขียวนีออนสไตล์ Live
+    badgeClass: "bg-[var(--accent2)] text-white",
     bannerTitle: "Animemaps TH",
     role: "Solo Developer",
     name: "Animemaps Thailand — Event Aggregator",
@@ -104,7 +101,7 @@ export const Projects: React.FC = () => {
               }}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }} // 🔒 การ์ดก็เด้งครั้งเดียวพอจ้า
+              viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
             >
               {/* 🎨 PROJECT BANNER (ถอดแบบมาจาก HTML เดิม 100%) */}

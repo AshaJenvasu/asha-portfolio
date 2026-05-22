@@ -129,18 +129,23 @@ export const TechStack: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* ── STACK CATEGORY BLOCKS ── */}
-        <div className="flex flex-col gap-12 mb-16">
+        {/* ── STACK CATEGORY BLOCKS (อัปเกรดเป็น Grid 2 คอลัมน์ แก้ปัญหาหน้าโล่ง) ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14 mb-24">
           {techCategories.map((cat, catIdx) => (
             <motion.div
               key={cat.title}
-              className="border-b border-dashed border-[var(--border)] pb-10 last:border-none last:pb-0"
+              // เปลี่ยนมาใช้กรอบ Card เน้นสัดส่วนให้เต็มพื้นที่แทนเส้นประด้านล่างค่ะ
+              className="bg-white border-2 border-[var(--border-strong)] p-6 md:p-8 shadow-sm hover:border-[var(--sky)] transition-all duration-300 relative"
+              style={{
+                clipPath:
+                  "polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))",
+              }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: catIdx * 0.1 }}
             >
-              <h3 className="font-['Exo_2'] text-xl md:text-2xl font-black text-[var(--navy)] uppercase tracking-[1px] mb-6">
+              <h3 className="font-['Exo_2'] text-2xl md:text-3xl font-black text-[var(--navy)] uppercase tracking-[1px] mb-6">
                 {cat.title}
               </h3>
 
@@ -148,7 +153,7 @@ export const TechStack: React.FC = () => {
                 {cat.skills.map((skill) => (
                   <div
                     key={skill.name}
-                    className="font-['Exo_2'] text-sm md:text-base font-bold text-[var(--navy)] bg-white border-2 border-[var(--border-strong)] px-5 py-3 transition-all duration-200 hover:border-[var(--sky)] hover:bg-[var(--sky-pale)] select-none flex items-center gap-2.5 group"
+                    className="font-['Exo_2'] text-sm md:text-base font-bold text-[var(--navy)] bg-[var(--off-white)] border-2 border-[var(--border-strong)] px-5 py-3 transition-all duration-200 hover:border-[var(--sky)] hover:bg-[var(--sky-pale)] select-none flex items-center gap-2.5 group"
                     style={{
                       clipPath:
                         "polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)",
@@ -173,36 +178,38 @@ export const TechStack: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          <h3 className="font-['Exo_2'] text-xl md:text-2xl font-black text-[var(--navy)] uppercase tracking-[1px] mb-8">
+          <h3 className="font-['Exo_2'] text-2xl md:text-3xl font-black text-[var(--navy)] uppercase tracking-[1px] mb-10">
             Linguistic Skills
           </h3>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {languageData.map((lang) => (
               <div
                 key={lang.code}
-                className="bg-white border-2 border-[var(--border-strong)] p-6 shadow-md transition-all duration-300 hover:border-[var(--sky)] relative overflow-hidden"
+                // ขยาย Padding ของการ์ดให้ใหญ่ขึ้นรับกับตัวอักษร
+                className="bg-white border-2 border-[var(--border-strong)] p-8 shadow-md transition-all duration-300 hover:border-[var(--sky)] relative overflow-hidden"
                 style={{
                   clipPath:
-                    "polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))",
+                    "polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px))",
                 }}
               >
-                {/* แถบรหัสนีออนสากล */}
-                <div className="absolute top-3 right-4 font-['Share_Tech_Mono'] text-xs font-bold text-[var(--sky)] bg-[var(--sky-pale)] px-2 py-0.5 border border-[var(--border)]">
+                {/* แถบรหัสนีออนสากล (ขยายขนาดตัวอักษร) */}
+                <div className="absolute top-4 right-5 font-['Share_Tech_Mono'] text-sm md:text-base font-bold text-[var(--sky)] bg-[var(--sky-pale)] px-3 py-1 border border-[var(--border)]">
                   {lang.code}
                 </div>
 
-                {/* lang-name */}
-                <div className="font-['Exo_2'] text-base md:text-lg font-black text-[var(--navy)] mb-1 pr-12">
+                {/* lang-name (ขยายตัวอักษรให้ใหญ่เบิ้ม) */}
+                <div className="font-['Exo_2'] text-xl md:text-2xl font-black text-[var(--navy)] mb-2 pr-12">
                   {lang.name}
                 </div>
-                {/* lang-level */}
-                <div className="font-['Share_Tech_Mono'] text-xs text-[var(--text-soft)] uppercase tracking-wider mb-4">
+
+                {/* lang-level (ขยายตัวอักษรให้อ่านง่ายขึ้น) */}
+                <div className="font-['Share_Tech_Mono'] text-sm md:text-base text-[var(--text-soft)] uppercase tracking-wider mb-6">
                   {lang.level}
                 </div>
 
                 {/* หลอดเกจพลังงาน */}
-                <div className="w-full h-2 bg-[var(--sky-pale)] border border-[var(--border)] relative overflow-hidden">
+                <div className="w-full h-2.5 bg-[var(--sky-pale)] border border-[var(--border)] relative overflow-hidden">
                   <motion.div
                     className="h-full bg-gradient-to-r from-[var(--sky)] to-[var(--accent2)]"
                     initial={{ width: 0 }}
