@@ -1,5 +1,7 @@
 import { Navbar } from "./components/00_Navbar";
 import { Hero } from "./components/01_Hero";
+import { TechStack } from "./components/02_TechStack";
+import { Experience } from "./components/03_Experience";
 
 function App() {
   return (
@@ -10,8 +12,8 @@ function App() {
       {/* 2. ส่วนเนื้อหา */}
       <main>
         <Hero />
-        {/* <TechStack /> */}
-        {/* <Experience /> */}
+        <TechStack />
+        <Experience />
         {/* <Projects /> */}
         {/* <Education /> */}
         {/* <Contact /> */}

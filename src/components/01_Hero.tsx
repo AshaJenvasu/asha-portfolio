@@ -156,7 +156,6 @@ export const Hero: React.FC = () => {
                 {/* แถบสีคาด */}
                 <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--sky)] via-[var(--accent2)] to-[var(--sky)]"></div>
 
-                {/* 🖼️ ช่องใส่รูปภาพแนวตั้งขนาดใหญ่ กินพื้นที่ยาวแทนตำแหน่ง CJ เดิมยาวลงไปเลยค่ะ */}
                 <div className="w-full aspect-[4/5] bg-[var(--sky-pale)] border-2 border-[var(--border)] overflow-hidden shadow-inner relative group mb-6">
                   <img
                     src={profileImg}
