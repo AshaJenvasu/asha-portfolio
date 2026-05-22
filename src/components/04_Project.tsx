@@ -93,7 +93,7 @@ export const Projects: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
           {projectsData.map((project, idx) => (
             <motion.div
-              key={project.title}
+              key={`${project.name}-${idx}`}
               className="bg-white border-2 border-[var(--border-strong)] shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col relative"
               style={{
                 clipPath:

@@ -16,18 +16,10 @@ import {
   SiExpress,
   SiMongodb,
   SiPostgresql,
-  SiVite,
-  SiPostman,
   SiVercel,
   SiRender,
 } from "react-icons/si";
 import { DiScrum } from "react-icons/di";
-
-interface LanguageItem {
-  name: string;
-  level: string;
-  percentage: string;
-}
 
 const techCategories = [
   {

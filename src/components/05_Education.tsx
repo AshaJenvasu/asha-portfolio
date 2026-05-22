@@ -59,7 +59,7 @@ const certificateData: CertificateItem[] = [
   {
     icon: "JA",
     name: "JLPT N3 Certificate",
-    issuer: "JEES · Japanese Proficiency",
+    issuer: "The Japan Foundation · Japanese Proficiency",
   },
 ];
 

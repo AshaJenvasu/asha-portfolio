@@ -10,10 +10,8 @@ import { Footer } from "./components/07_Footer";
 function App() {
   return (
     <div className="min-h-screen bg-[var(--off-white)] pt-[60px]">
-      {/* 1. แถบควบคุมเมนูด้านบน */}
       <Navbar />
 
-      {/* 2. ส่วนเนื้อหา */}
       <main>
         <Hero />
         <TechStack />
