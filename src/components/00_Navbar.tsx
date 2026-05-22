@@ -122,7 +122,7 @@ export const Navbar: React.FC = () => {
 
           <div className="font-['Share_Tech_Mono'] text-xs text-[var(--sky)] tracking-[1px] flex items-center justify-center gap-1.5 mt-3">
             <span className="w-1.5 h-1.5 rounded-full bg-[#4caf50] animate-pulse"></span>
-            AVAILABLE FOR WORK
+            AVAILABLE FOR OPPORTUNITIES
           </div>
         </div>
       </div>

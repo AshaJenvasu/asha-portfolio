@@ -1,4 +1,5 @@
 import { Navbar } from "./components/00_Navbar";
+import { Hero } from "./components/01_Hero";
 
 function App() {
   return (
@@ -6,9 +7,9 @@ function App() {
       {/* 1. แถบควบคุมเมนูด้านบน */}
       <Navbar />
 
-      {/* 2. บล็อกสำหรับ Section อื่นๆ (เดี๋ยวเราจะเอามาใส่ต่อตรงนี้ทีละชิ้นค่ะ) */}
+      {/* 2. ส่วนเนื้อหา */}
       <main>
-        {/* <Hero /> */}
+        <Hero />
         {/* <TechStack /> */}
         {/* <Experience /> */}
         {/* <Projects /> */}
