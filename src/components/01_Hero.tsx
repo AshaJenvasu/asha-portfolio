@@ -47,7 +47,7 @@ export const Hero: React.FC = () => {
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* ── LEFT SIDE: MAIN INFO (คงเดิมไว้ทุกตัวอักษร) ── */}
+          {/* ── LEFT SIDE: MAIN INFO  ── */}
           <div className="flex-1 order-2 lg:order-1 text-center lg:text-left">
             <motion.div
               className="flex-1 order-2 lg:order-1 text-center lg:text-left"
@@ -162,7 +162,6 @@ export const Hero: React.FC = () => {
                     alt="Chaiyawat Jenvasu"
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
                     onError={(e) => {
-                      // หากรูปยังไม่ถูกโหลด ให้แสดงกล่องสไตล์ Sci-Fi placeholder แก้ขัดไว้ก่อนค่ะ
                       e.currentTarget.style.display = "none";
                       const parent = e.currentTarget.parentElement;
                       if (parent) {
@@ -177,7 +176,6 @@ export const Hero: React.FC = () => {
                   />
                 </div>
 
-                {/* ข้อมูลสรุปด้านล่างรูปภาพตามหัวข้อที่คุณน้องเลือกไว้ */}
                 <div className="text-center w-full border-t border-[var(--border)] pt-5">
                   <h3 className="font-['Exo_2'] text-2xl font-black text-[var(--navy)] tracking-[2px] uppercase">
                     FULLSTACK CORE

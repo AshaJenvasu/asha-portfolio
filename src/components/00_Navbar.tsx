@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// ดึงไอคอนแบรนด์จาก Font Awesome (Fa) และไอคอนเมนูจาก Heroicons (Hi)
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 

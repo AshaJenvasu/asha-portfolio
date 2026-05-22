@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-// ⬇️ ดึงไอคอนของจริงจากคลังแสงสากลเข้ามาร่วมทัพ
 import {
   FaReact,
   FaHtml5,
@@ -30,7 +29,6 @@ interface LanguageItem {
   percentage: string;
 }
 
-// 📦 มัดรวมข้อมูลพร้อมติดตั้ง Component ไอคอนของจริงเข้าสู่ระบบหลังบ้าน
 const techCategories = [
   {
     title: "Frontend",
@@ -156,7 +154,6 @@ export const TechStack: React.FC = () => {
                         "polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%)",
                     }}
                   >
-                    {/* ขยายไอคอนเทคโนโลยีให้คมชัดและขยับเด้งเบาๆ ตอนเมาส์ชี้ผ่านกลุ่มชิปค่ะ */}
                     <span className="text-xl transition-transform duration-200 group-hover:scale-110">
                       {skill.icon}
                     </span>
@@ -190,7 +187,7 @@ export const TechStack: React.FC = () => {
                     "polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px))",
                 }}
               >
-                {/* แถบรหัสนีออนสากล [ ISO ] มุมขวาบนสไตล์การ์ดไอเทมในเกม */}
+                {/* แถบรหัสนีออนสากล */}
                 <div className="absolute top-3 right-4 font-['Share_Tech_Mono'] text-xs font-bold text-[var(--sky)] bg-[var(--sky-pale)] px-2 py-0.5 border border-[var(--border)]">
                   {lang.code}
                 </div>
@@ -204,7 +201,7 @@ export const TechStack: React.FC = () => {
                   {lang.level}
                 </div>
 
-                {/* หลอดเกจพลังงานคงเดิม */}
+                {/* หลอดเกจพลังงาน */}
                 <div className="w-full h-2 bg-[var(--sky-pale)] border border-[var(--border)] relative overflow-hidden">
                   <motion.div
                     className="h-full bg-gradient-to-r from-[var(--sky)] to-[var(--accent2)]"
