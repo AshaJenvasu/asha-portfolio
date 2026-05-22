@@ -186,7 +186,7 @@ export const Hero: React.FC = () => {
 
                   <div className="mt-4 flex items-center justify-center gap-2 text-xs font-bold text-[var(--text-soft)] uppercase tracking-widest">
                     <MapPin size={14} className="text-[var(--sky)]" />
-                    Bangkok, Thailand
+                    Based in Bangkok, TH — Open to Relocation
                   </div>
                 </div>
               </div>

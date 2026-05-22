@@ -71,13 +71,13 @@ export const Projects: React.FC = () => {
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full">
+      <div className="container mx-auto relative z-10 w-full px-6">
         {/* ── 💠 REVEAL: HEADER ZONE ── */}
         <motion.div
           className="mb-20 text-center lg:text-left"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} // 🔒 ล็อกอนิเมชันครั้งเดียวตามสัญญาค่ะ
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="font-['Share_Tech_Mono'] text-xs md:text-sm text-[var(--sky)] tracking-[3px] uppercase mb-2">
@@ -89,8 +89,8 @@ export const Projects: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* ── 💠 PROJECTS GRID (2 คอลัมน์บนจอใหญ่ แบบเดิม) ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        {/* ── 💠 PROJECTS GRID ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-14">
           {projectsData.map((project, idx) => (
             <motion.div
               key={project.title}
@@ -104,53 +104,53 @@ export const Projects: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
             >
-              {/* 🎨 PROJECT BANNER (ถอดแบบมาจาก HTML เดิม 100%) */}
+              {/* 🎨 PROJECT BANNER */}
               <div
-                className="relative h-32 md:h-40 p-6 flex flex-col justify-between overflow-hidden"
+                className="relative h-40 md:h-48 p-6 md:p-8 flex flex-col justify-between overflow-hidden"
                 style={project.bannerStyle}
               >
                 {/* ลายน้ำขนาดใหญ่ project-big-text */}
-                <div className="absolute -bottom-6 -right-2 font-['Exo_2'] font-black text-[80px] md:text-[100px] leading-none text-white opacity-5 select-none pointer-events-none">
+                <div className="absolute -bottom-6 -right-2 font-['Exo_2'] font-black text-[100px] md:text-[120px] leading-none text-white opacity-5 select-none pointer-events-none">
                   {project.bigText}
                 </div>
 
-                {/* ป้าย Badge (Featured / Live) */}
+                {/* ป้าย Badge (ขยายขนาด) */}
                 <div className="flex justify-end relative z-10">
                   <span
-                    className={`font-['Share_Tech_Mono'] text-[10px] md:text-xs font-bold px-3 py-1 uppercase tracking-wider ${project.badgeClass}`}
+                    className={`font-['Share_Tech_Mono'] text-xs md:text-sm font-bold px-4 py-1.5 uppercase tracking-wider ${project.badgeClass}`}
                   >
                     {project.badge}
                   </span>
                 </div>
 
-                {/* ชื่อแบนเนอร์โปรเจกต์ */}
-                <div className="font-['Exo_2'] text-3xl md:text-4xl font-black text-white relative z-10 tracking-wide">
+                {/* ชื่อแบนเนอร์โปรเจกต์ (ขยายขนาด) */}
+                <div className="font-['Exo_2'] text-4xl md:text-5xl font-black text-white relative z-10 tracking-wide">
                   {project.bannerTitle}
                 </div>
               </div>
 
               {/* 📄 PROJECT BODY */}
-              <div className="p-6 md:p-8 flex flex-col flex-1">
-                {/* project-role-chip */}
-                <div className="mb-4">
-                  <span className="font-['Share_Tech_Mono'] text-xs font-bold text-[var(--navy-mid)] border border-[var(--border-strong)] bg-[var(--off-white)] px-3 py-1.5 uppercase tracking-wider">
+              <div className="p-8 md:p-10 flex flex-col flex-1">
+                {/* project-role-chip (ขยายขนาด) */}
+                <div className="mb-6">
+                  <span className="font-['Share_Tech_Mono'] text-sm md:text-base font-bold text-[var(--navy-mid)] border border-[var(--border-strong)] bg-[var(--off-white)] px-4 py-2 uppercase tracking-wider">
                     {project.role}
                   </span>
                 </div>
 
-                {/* project-name & desc */}
-                <h3 className="font-['Exo_2'] text-xl md:text-2xl font-black text-[var(--navy)] mb-3 leading-tight">
+                {/* project-name & desc (ขยายขนาด) */}
+                <h3 className="font-['Exo_2'] text-2xl md:text-3xl font-black text-[var(--navy)] mb-4 leading-tight">
                   {project.name}
                 </h3>
-                <p className="text-base text-[var(--text-mid)] mb-6 leading-relaxed">
+                <p className="text-lg md:text-xl text-[var(--text-mid)] mb-8 leading-relaxed font-medium">
                   {project.desc}
                 </p>
 
-                {/* project-impacts (Bullet points สีฟ้า) */}
-                <ul className="flex flex-col gap-2.5 list-none pl-1 text-sm md:text-base text-[var(--text-mid)] mb-8 flex-1">
+                {/* project-impacts (ขยายขนาด) */}
+                <ul className="flex flex-col gap-3.5 list-none pl-1 text-base md:text-lg lg:text-xl text-[var(--text-mid)] mb-10 flex-1 font-medium">
                   {project.impacts.map((impact, iIdx) => (
-                    <li key={iIdx} className="flex items-start gap-2.5">
-                      <span className="text-[var(--sky)] text-lg leading-none mt-0.5">
+                    <li key={iIdx} className="flex items-start gap-3">
+                      <span className="text-[var(--sky)] text-xl leading-none mt-0.5">
                         ▪
                       </span>
                       <span>{impact}</span>
@@ -158,25 +158,25 @@ export const Projects: React.FC = () => {
                   ))}
                 </ul>
 
-                {/* project-tech (Tech Pills แบบฉบับดั้งเดิม) */}
-                <div className="flex flex-wrap gap-2 mb-8 pt-6 border-t border-dashed border-[var(--border)]">
+                {/* project-tech (ขยายขนาด) */}
+                <div className="flex flex-wrap gap-2.5 mb-10 pt-8 border-t border-dashed border-[var(--border)]">
                   {project.tech.map((tech) => (
                     <span
                       key={tech}
-                      className="font-['Share_Tech_Mono'] text-[10px] md:text-xs font-bold text-[var(--navy)] bg-[var(--sky-pale)] px-2.5 py-1 border border-[var(--border)] uppercase tracking-wider"
+                      className="font-['Share_Tech_Mono'] text-xs md:text-sm font-bold text-[var(--navy)] bg-[var(--sky-pale)] px-3 py-1.5 border border-[var(--border)] uppercase tracking-wider"
                     >
                       {tech}
                     </span>
                   ))}
                 </div>
 
-                {/* project-links (ปุ่ม Live & GitHub) */}
-                <div className="flex flex-wrap gap-4 mt-auto">
+                {/* project-links (ขยายปุ่มให้กดง่ายขึ้น) */}
+                <div className="flex flex-wrap gap-5 mt-auto">
                   <a
                     href={project.liveUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 font-['Share_Tech_Mono'] text-sm font-bold text-white bg-[var(--navy)] px-5 py-2.5 hover:bg-[var(--sky)] transition-colors uppercase tracking-widest border border-[var(--navy)]"
+                    className="flex items-center gap-2 font-['Share_Tech_Mono'] text-base md:text-lg font-bold text-white bg-[var(--navy)] px-6 py-3 hover:bg-[var(--sky)] transition-colors uppercase tracking-widest border border-[var(--navy)]"
                   >
                     ▶ Live Demo
                   </a>
@@ -184,7 +184,7 @@ export const Projects: React.FC = () => {
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 font-['Share_Tech_Mono'] text-sm font-bold text-[var(--navy)] bg-transparent px-5 py-2.5 hover:bg-[var(--sky-pale)] hover:border-[var(--sky)] transition-colors uppercase tracking-widest border border-[var(--border-strong)]"
+                    className="flex items-center gap-2 font-['Share_Tech_Mono'] text-base md:text-lg font-bold text-[var(--navy)] bg-transparent px-6 py-3 hover:bg-[var(--sky-pale)] hover:border-[var(--sky)] transition-colors uppercase tracking-widest border border-[var(--border-strong)]"
                   >
                     ⌥ GitHub
                   </a>

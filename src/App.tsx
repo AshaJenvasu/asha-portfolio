@@ -4,6 +4,8 @@ import { TechStack } from "./components/02_TechStack";
 import { Experience } from "./components/03_Experience";
 import { Projects } from "./components/04_Project";
 import { Education } from "./components/05_Education";
+import { Contact } from "./components/06_Contact";
+import { Footer } from "./components/07_Footer";
 
 function App() {
   return (
@@ -18,11 +20,10 @@ function App() {
         <Experience />
         <Projects />
         <Education />
-        {/* <Contact /> */}
+        <Contact />
       </main>
 
-      {/* ตัวอย่างเพื่อเช็ก Scroll (ใส่ไว้ชั่วคราวก่อน) */}
-      <div className="h-[200vh] pointer-events-none" />
+      <Footer />
     </div>
   );
 }

@@ -54,7 +54,7 @@ export const Navbar: React.FC = () => {
           className="text-[var(--navy)] hover:text-[var(--sky)] transition-colors duration-200 p-1.5 hover:bg-[var(--sky-pale)] rounded-md"
           title="GitHub Profile"
         >
-          <FaGithub size={22} />
+          <FaGithub size={30} />
         </a>
         <a
           href="https://linkedin.com/in/chaiyawat-jenvasu"
@@ -63,7 +63,7 @@ export const Navbar: React.FC = () => {
           className="text-[var(--navy)] hover:text-[var(--sky)] transition-colors duration-200 p-1.5 hover:bg-[var(--sky-pale)] rounded-md"
           title="LinkedIn Profile"
         >
-          <FaLinkedin size={22} />
+          <FaLinkedin size={30} />
         </a>
       </div>
 

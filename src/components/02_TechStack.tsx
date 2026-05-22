@@ -111,7 +111,7 @@ export const TechStack: React.FC = () => {
     >
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
 
-      <div className="container mx-auto px-6 md:px-12 relative z-10 w-full">
+      <div className="container mx-auto relative z-10 w-full px-6">
         {/* ── HEADER ZONE ── */}
         <motion.div
           className="mb-16 text-center lg:text-left"
