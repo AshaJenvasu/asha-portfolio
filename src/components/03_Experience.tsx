@@ -2,6 +2,9 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
 
+// ── แปะรูป Animemaps ตรงนี้ ──
+import animemapsPreviewImg from "../assets/screenshot-animemaps.png";
+
 interface ExperienceItem {
   role: string;
   company: string;
@@ -11,6 +14,7 @@ interface ExperienceItem {
   tags: string[];
   customDotStyle?: React.CSSProperties;
   liveLink?: string;
+  screenshotUrl?: string;
 }
 
 const experienceData: ExperienceItem[] = [
@@ -46,6 +50,7 @@ const experienceData: ExperienceItem[] = [
       boxShadow: "0 0 0 2px var(--accent2)",
     },
     liveLink: "https://animemaps.com",
+    screenshotUrl: animemapsPreviewImg,
   },
   {
     role: "Market Research Analyst",
@@ -69,7 +74,7 @@ export const Experience: React.FC = () => {
       <div className="absolute inset-0 bg-grid-pattern opacity-40 pointer-events-none"></div>
 
       <div className="container mx-auto relative z-10 w-full px-6">
-        {/* ── 💠 REVEAL: HEADER ZONE ── */}
+        {/* HEADER */}
         <motion.div
           className="mb-20 text-center lg:text-left"
           initial={{ opacity: 0, y: 20 }}
@@ -86,7 +91,7 @@ export const Experience: React.FC = () => {
           </h2>
         </motion.div>
 
-        {/* ── 💠 TIMELINE STRUCTURE ── */}
+        {/* TIMELINE */}
         <div className="relative border-l-2 border-dashed border-[var(--border-strong)] ml-4 md:ml-6 flex flex-col gap-14">
           {experienceData.map((item, idx) => (
             <motion.div
@@ -97,76 +102,100 @@ export const Experience: React.FC = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: idx * 0.15 }}
             >
-              {/* tl-dot */}
+              {/* dot */}
               <div
                 className="absolute left-[-7px] top-2.5 w-3 h-3 bg-[var(--sky)] border border-white transition-transform duration-300 group-hover:scale-125"
                 style={item.customDotStyle}
-              ></div>
+              />
 
-              {/* tl-card */}
+              {/* card */}
               <div
-                className="bg-white border-2 border-[var(--border-strong)] p-6 md:p-10 shadow-md hover:shadow-lg transition-all duration-300 hover:border-[var(--sky)] relative"
+                className="bg-white border-2 border-[var(--border-strong)] shadow-md hover:shadow-lg transition-all duration-300 hover:border-[var(--sky)] relative overflow-hidden"
                 style={{
                   clipPath:
                     "polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 30px))",
                 }}
               >
-                {/* tl-header: */}
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 pb-6 border-b border-dashed border-[var(--border)]">
-                  <div>
-                    <h3 className="font-['Exo_2'] text-2xl md:text-3xl font-black text-[var(--navy)] tracking-[0.5px] leading-tight">
-                      {item.role}
-                    </h3>
-                    <div className="text-base md:text-lg font-bold text-[var(--sky)] uppercase tracking-[0.5px] mt-2">
-                      {item.company}
-                    </div>
-                  </div>
-
-                  <div className="font-['Share_Tech_Mono'] text-xs md:text-sm text-[var(--text-soft)] text-left md:text-right uppercase tracking-[1px] whitespace-nowrap">
-                    <div className="font-bold text-[var(--navy-mid)] text-sm md:text-base mb-1">
-                      {item.period}
-                    </div>
-                    <div>{item.location}</div>
-                  </div>
-                </div>
-
-                {/* tl-desc */}
-                <div className="mb-8">
-                  <ul className="flex flex-col gap-3.5 list-disc pl-6 text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text-mid)] font-medium">
-                    {item.descBullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="marker:text-[var(--sky)]">
-                        {bullet}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                {/* FOOTER ZONE: */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-dashed border-[var(--border)]">
-                  {/* กล่องชิปคีย์เวิร์ดด้านซ้ายล่าง */}
-                  <div className="flex flex-wrap gap-2.5">
-                    {item.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="font-['Share_Tech_Mono'] text-xs md:text-sm font-bold text-[var(--navy-mid)] bg-[var(--sky-pale)] border border-[var(--border)] px-3 py-1.5 uppercase tracking-wider transition-colors hover:border-[var(--sky)] select-none"
-                      >
-                        {tag}
+                {/* ── Animemaps only: screenshot banner ── */}
+                {item.screenshotUrl && item.liveLink && (
+                  <a
+                    href={item.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block relative overflow-hidden border-b-2 border-[var(--border-strong)] group/img"
+                    title="Visit Animemaps.com"
+                  >
+                    <img
+                      src={item.screenshotUrl}
+                      alt="Animemaps.com preview"
+                      className="w-full h-40 md:h-52 object-cover object-top group-hover/img:scale-105 transition-transform duration-700"
+                      draggable={false}
+                    />
+                    {/* subtle overlay + visit hint */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <span className="font-['Share_Tech_Mono'] text-xs font-bold text-white uppercase tracking-widest flex items-center gap-2">
+                        <ExternalLink size={13} /> Visit Animemaps.com
                       </span>
-                    ))}
+                    </div>
+                  </a>
+                )}
+
+                <div className="p-6 md:p-10">
+                  {/* header */}
+                  <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6 pb-6 border-b border-dashed border-[var(--border)]">
+                    <div>
+                      <h3 className="font-['Exo_2'] text-2xl md:text-3xl font-black text-[var(--navy)] tracking-[0.5px] leading-tight">
+                        {item.role}
+                      </h3>
+                      <div className="text-base md:text-lg font-bold text-[var(--sky)] uppercase tracking-[0.5px] mt-2">
+                        {item.company}
+                      </div>
+                    </div>
+
+                    <div className="font-['Share_Tech_Mono'] text-xs md:text-sm text-[var(--text-soft)] text-left md:text-right uppercase tracking-[1px] whitespace-nowrap">
+                      <div className="font-bold text-[var(--navy-mid)] text-sm md:text-base mb-1">
+                        {item.period}
+                      </div>
+                      <div>{item.location}</div>
+                    </div>
                   </div>
 
-                  {/* ปุ่ม Launch Site */}
-                  {item.liveLink && (
-                    <a
-                      href={item.liveLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 font-['Share_Tech_Mono'] text-sm md:text-base font-black text-[var(--sky)] border-2 border-[var(--sky)] bg-[var(--sky-pale)] px-6 py-3 transition-all duration-200 hover:bg-[var(--sky)] hover:text-white uppercase tracking-wider self-start sm:self-auto w-full sm:w-auto"
-                      title="Launch Live Platform"
-                    >
-                      Launch Site <ExternalLink size={16} />
-                    </a>
-                  )}
+                  {/* bullets */}
+                  <div className="mb-8">
+                    <ul className="flex flex-col gap-3.5 list-disc pl-6 text-base md:text-lg lg:text-xl leading-relaxed text-[var(--text-mid)] font-medium">
+                      {item.descBullets.map((bullet, bIdx) => (
+                        <li key={bIdx} className="marker:text-[var(--sky)]">
+                          {bullet}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* footer */}
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-dashed border-[var(--border)]">
+                    <div className="flex flex-wrap gap-2.5">
+                      {item.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="font-['Share_Tech_Mono'] text-xs md:text-sm font-bold text-[var(--navy-mid)] bg-[var(--sky-pale)] border border-[var(--border)] px-3 py-1.5 uppercase tracking-wider transition-colors hover:border-[var(--sky)] select-none"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {item.liveLink && (
+                      <a
+                        href={item.liveLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 font-['Share_Tech_Mono'] text-sm md:text-base font-black text-[var(--sky)] border-2 border-[var(--sky)] bg-[var(--sky-pale)] px-6 py-3 transition-all duration-200 hover:bg-[var(--sky)] hover:text-white uppercase tracking-wider self-start sm:self-auto w-full sm:w-auto"
+                        title="Launch Live Platform"
+                      >
+                        Launch Site <ExternalLink size={16} />
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
             </motion.div>

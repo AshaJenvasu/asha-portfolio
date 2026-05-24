@@ -76,7 +76,7 @@ const projectsData: ProjectItem[] = [
     desc: "Production-grade full-stack app featuring JWT authentication, role-based access control, and persistent session management.",
     impacts: [
       "Built Auto-Login on Register — users land directly in the app post sign-up without re-entering credentials.",
-      "Implemented session recovery via HTTP-Only cookies; auth state survives page refresh without Redux.",
+      " Persistent Sessions with HTTP-Only cookies — no more losing auth state on F5 refresh.",
       "Debugged a silent 404 on session restore traced to a mismatched API route across two independent repos.",
     ],
     tech: [
