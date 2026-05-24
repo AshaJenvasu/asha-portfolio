@@ -47,7 +47,7 @@ export const Contact: React.FC = () => {
           {/* ขยาย Headline */}
           <div className="font-['Exo_2'] text-2xl md:text-3xl font-black text-white leading-snug mb-8 border-b-4 border-[var(--sky)] pb-5 inline-block px-8">
             Open to Software Developer <br className="hidden md:block" />
-            <span className="text-[var(--sky)]">opportunities globally.</span>
+            <span className="text-[var(--sky)]">Opportunities globally.</span>
           </div>
 
           <p className="text-lg md:text-xl text-slate-300 leading-relaxed mb-14 font-medium max-w-3xl">
