@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-// ── แปะรูปตรงนี้ ──
 import creativeMarketImg from "../assets/screenshot-creative-market.png";
 import animemapsImg from "../assets/screenshot-animemapsTH.png";
 import escanorImg from "../assets/screenshot-escanor.png";
@@ -19,6 +18,7 @@ interface ProjectItem {
   tech: string[];
   liveUrl: string;
   githubUrl: string;
+  figmaUrl?: string; // optional — renders only when provided
 }
 
 const projectsData: ProjectItem[] = [
@@ -46,6 +46,8 @@ const projectsData: ProjectItem[] = [
     ],
     liveUrl: "https://creative-market-front-end-sprint-2-mu.vercel.app/",
     githubUrl: "https://github.com/AshaJenvasu/creative-market-front-end",
+    figmaUrl:
+      "https://www.figma.com/board/knELaqlKa8ARUQofT0FwEE/Commit-no-Jutsu?node-id=0-1&p=f", // ← แปะ Figma link ตรงนี้
   },
   {
     screenshotUrl: animemapsImg,
@@ -64,6 +66,8 @@ const projectsData: ProjectItem[] = [
     tech: ["HTML", "CSS", "Vanilla JS", "Tailwind CSS", "Vercel"],
     liveUrl: "https://animemaps-thailand.vercel.app/",
     githubUrl: "https://github.com/AshaJenvasu/animemaps-thailand",
+    figmaUrl:
+      "https://www.figma.com/board/otlg1VACLogb10l3FjtgE8/Animemaps-Thailand?node-id=0-1&t=2pubWd33EzDX075x-1", // ← แปะ Figma link ตรงนี้
   },
   {
     screenshotUrl: escanorImg,
@@ -76,7 +80,7 @@ const projectsData: ProjectItem[] = [
     desc: "Production-grade full-stack app featuring JWT authentication, role-based access control, and persistent session management.",
     impacts: [
       "Built Auto-Login on Register — users land directly in the app post sign-up without re-entering credentials.",
-      " Persistent Sessions with HTTP-Only cookies — no more losing auth state on F5 refresh.",
+      "Persistent Sessions with HTTP-Only cookies — no more losing auth state on F5 refresh.",
       "Debugged a silent 404 on session restore traced to a mismatched API route across two independent repos.",
     ],
     tech: [
@@ -90,6 +94,7 @@ const projectsData: ProjectItem[] = [
     ],
     liveUrl: "https://week-12-react-assessment-rebuild.vercel.app/",
     githubUrl: "https://github.com/AshaJenvasu/week_10_react-assessment",
+    // ไม่มี figmaUrl → ปุ่ม Design จะไม่ render อัตโนมัติ
   },
 ];
 
@@ -117,15 +122,10 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({
         className="w-full h-full object-cover object-top"
         draggable={false}
       />
-      {/* gradient overlay ให้อ่านชื่อได้ */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-      {/* watermark */}
       <div className="absolute -bottom-4 -right-2 font-['Exo_2'] font-black text-[80px] md:text-[100px] leading-none text-white opacity-5 select-none pointer-events-none">
         {project.bigText}
       </div>
-
-      {/* badge */}
       <div className="absolute top-4 right-4 z-10">
         <span
           className={`font-['Share_Tech_Mono'] text-xs font-bold px-3 py-1.5 uppercase tracking-wider ${project.badgeClass}`}
@@ -133,8 +133,6 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({
           {project.badge}
         </span>
       </div>
-
-      {/* title บน overlay */}
       <div className="absolute bottom-4 left-6 z-10 font-['Exo_2'] text-3xl md:text-4xl font-black text-white tracking-wide drop-shadow-lg">
         {project.bannerTitle}
       </div>
@@ -177,7 +175,9 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-4 mt-auto">
+      {/* 🔗 LINKS */}
+      <div className="flex flex-wrap gap-3 mt-auto">
+        {/* Live Demo */}
         <a
           href={project.liveUrl}
           target="_blank"
@@ -186,6 +186,8 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({
         >
           ▶ Live Demo
         </a>
+
+        {/* GitHub */}
         <a
           href={project.githubUrl}
           target="_blank"
@@ -194,6 +196,18 @@ const ProjectCard: React.FC<{ project: ProjectItem; index: number }> = ({
         >
           ⌥ GitHub
         </a>
+
+        {/* Figma — renders only when figmaUrl exists */}
+        {project.figmaUrl && (
+          <a
+            href={project.figmaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 font-['Share_Tech_Mono'] text-sm font-bold text-[var(--navy-mid)] bg-transparent px-5 py-2.5 hover:bg-purple-50 hover:border-purple-400 hover:text-purple-600 transition-colors uppercase tracking-widest border border-[var(--border-strong)]"
+          >
+            ◈ Design
+          </a>
+        )}
       </div>
     </div>
   </motion.div>
@@ -204,14 +218,13 @@ export const Projects: React.FC = () => {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // drag scroll state
   const isDragging = useRef(false);
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
   const cardWidth = () => {
     const card = trackRef.current?.children[0] as HTMLElement | undefined;
-    return card ? card.offsetWidth + 40 : 520; // 40 = gap
+    return card ? card.offsetWidth + 40 : 520;
   };
 
   const scrollTo = (idx: number) => {
@@ -229,7 +242,6 @@ export const Projects: React.FC = () => {
     setActiveIndex(Math.max(0, Math.min(projectsData.length - 1, idx)));
   };
 
-  // mouse drag
   const onMouseDown = (e: React.MouseEvent) => {
     isDragging.current = true;
     startX.current = e.pageX - (trackRef.current?.offsetLeft ?? 0);
@@ -272,8 +284,6 @@ export const Projects: React.FC = () => {
             Projects
             <span className="absolute bottom-[-8px] left-0 right-0 h-[5px] bg-[var(--sky)]" />
           </h2>
-
-          {/* card count hint */}
           <p className="font-['Share_Tech_Mono'] text-xs text-[var(--sky)] tracking-widest mt-6 opacity-70">
             {activeIndex + 1} / {projectsData.length} — DRAG OR USE ARROWS
           </p>
@@ -293,13 +303,11 @@ export const Projects: React.FC = () => {
           {projectsData.map((project, idx) => (
             <ProjectCard key={project.name} project={project} index={idx} />
           ))}
-          {/* trailing spacer */}
           <div className="flex-shrink-0 w-6" />
         </div>
 
         {/* CONTROLS */}
         <div className="flex items-center justify-between px-6 mt-8">
-          {/* dot indicators */}
           <div className="flex gap-2.5 items-center">
             {projectsData.map((_, i) => (
               <button
@@ -314,8 +322,6 @@ export const Projects: React.FC = () => {
               />
             ))}
           </div>
-
-          {/* arrow buttons */}
           <div className="flex gap-3">
             <button
               onClick={() => scrollTo(activeIndex - 1)}
