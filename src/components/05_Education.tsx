@@ -24,7 +24,8 @@ interface CertificateItem {
 const educationData: EducationItem[] = [
   {
     icon: <GraduationCap size={32} className="text-[var(--sky)]" />, // ขยายไอคอนหมวก
-    degree: "B.B.A. Strategic Management & Leadership",
+    degree:
+      "COLLEGE OF INTERNATIONAL MANAGEMENT Strategic Management & Leadership",
     school: "Ritsumeikan Asia Pacific University (APU)",
     period: "Beppu, Japan · Sep 2020 – Sep 2024",
     note: (
